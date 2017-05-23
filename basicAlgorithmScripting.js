@@ -10,6 +10,8 @@ function reverseString(str) {
 
 reverseString("hello");
 
+
+
 // Return the factorial of the provided integer.
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function factorialize(num) {
@@ -20,6 +22,8 @@ function factorialize(num) {
 }
 
 factorialize(5);
+
+
 
 // Return true if the given string is a palindrome. Otherwise, return false.
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -32,8 +36,8 @@ function palindrome1(str) {
 // Intermediate Code Solution:
 function palindrome0(str) {
     str = str.toLowerCase().replace(/[\W_]/g, '');
-    for(var i = 0, len = str.length - 1; i < len/2; i++) {
-        if(str[i] !== str[len-i]) {
+    for (var i = 0, len = str.length - 1; i < len / 2; i++) {
+        if (str[i] !== str[len - i]) {
             return false;
         }
     }
@@ -52,17 +56,17 @@ function palindrome(str) {
     //back and front pointers won't always meet in the middle, so use (back > front)
     while (back > front) {
         //increments front pointer if current character doesn't meet criteria
-        if ( str[front].match(/[\W_]/) ) {
+        if (str[front].match(/[\W_]/)) {
             front++;
             continue
         }
         //decrements back pointer if current character doesn't meet criteria
-        if ( str[back].match(/[\W_]/) ) {
+        if (str[back].match(/[\W_]/)) {
             back--;
             continue
         }
         //finally does the comparison on the current character
-        if ( str[front].toLowerCase() !== str[back].toLowerCase() ) return false
+        if (str[front].toLowerCase() !== str[back].toLowerCase()) return false
         front++;
         back--
     }
@@ -72,6 +76,8 @@ function palindrome(str) {
 }
 
 palindrome("eye");
+
+
 
 // Find the Longest Word in a String.
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -91,7 +97,7 @@ function findLongestWord1(str) {
 // Intermediate Code Solution
 function findLongestWord0(s) {
     return s.split(' ')
-        .reduce(function(x, y) {
+        .reduce(function (x, y) {
             return Math.max(x, y.length)
         }, 0);
 }
@@ -105,23 +111,55 @@ function findLongestWord(str) {
 
     //str only has 1 element left that is the longest element,
     //return the length of that element
-    if(str.length == 1){
+    if (str.length == 1) {
         return str[0].length;
     }
 
     //if the first element's length is greater than the second element's (or equal)
     //remove the second element and recursively call the function)
-    if(str[0].length >= str[1].length){
-        str.splice(1,1);
+    if (str[0].length >= str[1].length) {
+        str.splice(1, 1);
         return findLongestWord(str.join(" "));
     }
 
     //if the second element's length is greater thant the first element's start
     //call the function past the first element
-    if(str[0].length <= str[1].length){
+    if (str[0].length <= str[1].length) {
         // from the first element to the last element inclusive.
-        return findLongestWord(str.slice(1,str.length).join(" "));
+        return findLongestWord(str.slice(1, str.length).join(" "));
     }
 }
 
 findLongestWord("The quick brown fox jumped over the lazy dog");
+
+
+// Title Case a Sentence.
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+String.prototype.replaceAt = function (index, character) {
+    return this.substr(0, index) + character + this.substr(index + character.length);
+};
+
+function titleCase1(str) {
+    var newTitle = str.split(' ');
+    var updatedTitle = [];
+    for (var st in newTitle) {
+        updatedTitle[st] = newTitle[st].toLowerCase().replaceAt(0, newTitle[st].charAt(0).toUpperCase());
+    }
+    return updatedTitle.join(' ');
+}
+
+// Intermediate Code Solution
+function titleCase0(str) {
+    var convertToArray = str.toLowerCase().split(" ");
+    var result = convertToArray.map(function(val){
+        return val.replace(val.charAt(0), val.charAt(0).toUpperCase());
+    });
+    return result.join(" ");
+}
+
+// Advanced Code Solution (ES6)
+// function titleCase(str) {
+//     return str.toLowerCase().replace(/(^|\s)\S/g, (L) => L.toUpperCase());
+// }
+
+titleCase("I'm a little tea pot");
