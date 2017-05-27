@@ -1,9 +1,11 @@
 /**
  * Created by Alex on 27.05.2017.
+ *
+ * Check for Palindromes
+ *
+ * Return true if the given string is a palindrome. Otherwise, return false.
  */
 
-// Return true if the given string is a palindrome. Otherwise, return false.
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //Basic Code Solution:
 function palindrome1(str) {
     return str.replace(/[\W_]/g, '').toLowerCase() ===

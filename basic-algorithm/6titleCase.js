@@ -1,10 +1,13 @@
 /**
  * Created by Alex on 27.05.2017.
+ *
+ *  Title Case a Sentence
+ *
+ *  Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.
  */
-"use strict"
 
-// Title Case a Sentence.
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"use strict";
+
 String.prototype.replaceAt = function (index, character) {
     return this.substr(0, index) + character + this.substr(index + character.length);
 };

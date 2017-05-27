@@ -1,9 +1,12 @@
 /**
  * Created by Alex on 27.05.2017.
+ *
+ * Find the Longest Word in a String.
+ *
+ * Return the length of the longest word in the provided sentence.
  */
 
-// Find the Longest Word in a String.
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 function findLongestWord1(str) {
     var words = str.split(' ');
     var maxLength = 0;
